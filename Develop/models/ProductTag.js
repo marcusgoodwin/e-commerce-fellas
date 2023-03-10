@@ -10,7 +10,7 @@ ProductTag.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      allowNull: false,
+      autoIncrement: true,
     },
     product_id : {
       type: DataTypes.INTEGER,

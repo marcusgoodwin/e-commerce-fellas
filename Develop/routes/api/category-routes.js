@@ -31,7 +31,11 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const data = await Category.create(req.body);
+    const data = await Category.create(req.body, {
+      where: {
+        category_name: req.body.name,
+      },
+    });
     res.send(data);
   } catch (error) {
     console.error(error);
@@ -39,40 +43,40 @@ router.post("/", async (req, res) => {
   }
 });
 
-
 router.put("/:id", async (req, res) => {
   try {
-    const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    if (!category) {
-      return res.status(404).send("Category not found");
+    const data = await Category.update( req.body,
+      {
+        where: {
+          id: req.params.id,
+        },
+      });
+      if (!data[0]) {
+        res.status(404).json({ message: 'No category with this id' });
+        return;
+      }
+      res.status(200).json(data);
+    } catch (err) {
+      res.status(500).json(err);
     }
-    res.send(category);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Server error");
-  }
 });
-
 
 router.delete("/:id", async (req, res) => {
   try {
     const data = await Id.destroy({
       where: {
-        id : req.params.id,
+        id: req.params.id,
       },
     });
-  if (!data) {
-    res.status(404).json({ message: 'No Category with that name found.' })
-    return;
-  }
+    if (!data) {
+      res.status(404).json({ message: "No Category with that name found." });
+      return;
+    }
 
-  res.status(200).json(data);
-} catch (err) {
-  res.status(500).json(err);
-}
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
