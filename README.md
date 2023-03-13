@@ -1,4 +1,4 @@
-# orm-assignment
+# ecommerce-fellas
 
 ## Description
 This project was designed to effortlessly update, delete and create product information.
