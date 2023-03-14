@@ -22,4 +22,4 @@ The creator's email is mwgoodwin2000@gmail.com
 The creator's github is www.github.com/marcusgoodwin
 
 ## Video Walk-Through
-https://drive.google.com/file/d/1wIV49hWyNjohEzQkGPAdv3zNhH0JU3aN/view
+https://drive.google.com/file/d/1_FabEfKVGA9eGiLLfh4_dBdQ0gkS4loN/view
