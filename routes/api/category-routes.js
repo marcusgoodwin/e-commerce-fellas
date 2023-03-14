@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
     }
     res.status(200).json(data);
   } catch (error) {
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 });
 
@@ -63,7 +63,7 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const data = await Id.destroy({
+    const data = await Category.destroy({
       where: {
         id: req.params.id,
       },
